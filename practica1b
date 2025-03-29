@@ -1,0 +1,24 @@
+10 * peso + (15 * peso).
+10*peso + (10*dollar) - (2*dollar) - (8*dollar).
+(10* peso) unit.
+peso := BaseUnit nameForOne:'peso'  nameForMany: 'pesos' sign: $$. 
+
+metro := BaseUnit nameForOne: 'metro' nameForMany: 'metros'. 
+centimetros := ProportionalDerivedUnit baseUnit: metro conversionFactor: 0.001  nameForOne: 'centimetro'  nameForMany: 'centimetros' sign: 'cm'.
+(10*metros) + (500* centimetros). 
+
+diezMetros := 10* metros.
+pulgadas := ProportionalDerivedUnit baseUnit: metros conversionFactor: 0.0254 nameForOne: 'pulgada'  nameForMany: 'pulgadas' sign: 'p'. 
+sesentaPulgadas := 60 * pulgadas.
+diezMetros + sesentaPulgadas. 
+
+
+kelvin := BaseUnit nameForOne: 'kelvin' nameForMany: 'kelvins'.
+celsius := NotProportionalDerivedUnit baseUnit: kelvin  conversionBlock: [ :x| x + 273]  reciprocalConversionBlock: [:x | x - 273]  nameForOne: 'celsius' nameForMany: 'celsiuss'  sign: '°C'. 
+(10* celsius) + (275 * kelvin).
+
+fahrenheit := NotProportionalDerivedUnit baseUnit: kelvin  conversionBlock: [ :x| (x- 32)*0.55 + 273.15]  reciprocalConversionBlock: [:x | (x-273.15) *1.8 - 32]  nameForOne: 'fahrenheit' nameForMany: 'fahrenheit'  sign: 'F'. 
+(10* fahrenheit).
+
+fahrenheit convertAmountToBaseUnit: 10.
+	
