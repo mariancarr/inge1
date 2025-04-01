@@ -4,8 +4,8 @@
 peso := BaseUnit nameForOne:'peso'  nameForMany: 'pesos' sign: $$. 
 
 metro := BaseUnit nameForOne: 'metro' nameForMany: 'metros'. 
-centimetros := ProportionalDerivedUnit baseUnit: metro conversionFactor: 0.001  nameForOne: 'centimetro'  nameForMany: 'centimetros' sign: 'cm'.
-(10*metros) + (500* centimetros). 
+centimetros := ProportionalDerivedUnit baseUnit: metro conversionFactor: 0.01  nameForOne: 'centimetro'  nameForMany: 'centimetros' sign: 'cm'.
+(10*metro) + (500* centimetros). 
 
 diezMetros := 10* metros.
 pulgadas := ProportionalDerivedUnit baseUnit: metros conversionFactor: 0.0254 nameForOne: 'pulgada'  nameForMany: 'pulgadas' sign: 'p'. 
@@ -21,4 +21,65 @@ fahrenheit := NotProportionalDerivedUnit baseUnit: kelvin  conversionBlock: [ :x
 (10* fahrenheit).
 
 fahrenheit convertAmountToBaseUnit: 10.
-	
+
+DateAndTime fromSeconds: 0.
+(DateAndTime fromSeconds: 0) + (Duration days: 1).
+Time now.
+Time hour: 1 minute: 2 second: 4.
+Time now + (Duration hours: 1).
+(DateAndTime fromSeconds: 0) + (Duration days: 1905).
+Date today.
+Date newDay: 18 month: 10 year: 2025.
+
+
+FixedGregorianDate today next: (86400*second).
+FixedGregorianDate today next next.
+GregorianDateTime now next:(86400*second).
+GregorianDateTime now.
+GregorianDateTime now next distanceFrom: GregorianDateTime now.
+(GregorianDateTime now next distanceFrom: GregorianDateTime now) convertTo: second / millisecond.
+TimeOfDay now.
+TimeOfDay now next: (10 * hour).
+FixedGregorianDate today year.
+FixedGregorianDate today month.
+FixedGregorianDate today monthOfYear.
+
+2024 isLeap.
+(April, 2024) year isLeap.
+TimeOfDay now next: (3600*second).
+
+| elements odds|
+elements:= #(4 3 11 5 42).
+odds := OrderedCollection new.
+elements do: [:element |
+odds add: element*2].
+odds
+
+|elements odds oddIndex|
+elements:= #(2 3 4 5 6).
+oddIndex := false.
+odds := elements select: [:element |
+oddIndex := oddIndex not.
+].
+odds.
+
+|elements|
+elements:= #(2 3 4 5 6).
+elements collect: [:element | 2* element].
+
+|elements|
+elements:= #(1 1 2 6 9).
+elements findFirst: [:element | element even].
+
+|element suma index|
+element := #(2 2 2 2 3 4).
+index := 1.
+suma := 0.
+[index <= element size] whileTrue: [suma := suma + element at: index. index := index +1].
+suma.
+
+|elements suma|
+elements := #(2 2 2 2 3 4).
+suma := 0.
+elements do: [:element| suma := suma + element].
+suma
