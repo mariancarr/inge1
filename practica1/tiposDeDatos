@@ -1,0 +1,29 @@
+anObject := Practica1b new.
+anObject m1.
+
+x:= Array with: 5 with:1 with:10 with:0.
+y := #(5 1 10 0).
+z := OrderedCollection with:5 with:4 with:3 with:2 with:1.
+z at:1 put:42. 
+z at:5 put: 2.
+
+h := Set with: 4 with: 3 with: 2 with: 1. 
+h add: 42.
+h add: 2.
+h add: 2.
+
+d := Dictionary new. 
+d add: #a->1; add:#b -> 2; add: #c -> 3; yourself. 
+d at: #a put: 33.
+d at: #a put:1.
+d values.
+d keys.
+d at: #d put: 4.
+d at:#a ifAbsent:[24].
+
+arrToCollec := x asOrderedCollection.
+arrToSet := x asSet.
+
+setToArr := h asArray.
+
+dictToArray := d asArray. #(2 1 3) .
