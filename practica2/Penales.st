@@ -702,7 +702,6 @@ test34ArqueroQueEsperaPorTiroYSeAdelantaVsPlayeraAMatarSiempreAtaja
 	self assert: 1 equals: juegoPenales puntajeDeArquero.
 	self assert: 2@1 equals: juegoPenales varDireccionRemateResultante! !
 
-
 
 !classDefinition: #Arquero category: #Penales!
 Object subclass: #Arquero
@@ -846,28 +845,30 @@ initializeConDelantero: aDelantero yArquero: anArquero
 	puntajeDelArquero := 0.! !
 
 
-!Penales methodsFor: 'jugarPenal' stamp: 'mc 4/22/2025 14:57:19'!
+!Penales methodsFor: 'jugarPenal' stamp: 'mc 4/22/2025 18:58:05'!
 arbitroPitaConPelota: aPelota delanteroRemataAlArcoConDireccion: aDireccionDelRemate arqueroSeLanzaEnDirección: aDireccionDelArquero.
 	pelota := aPelota.
 	direccionArquero := aDireccionDelArquero.
 	direccionTiro := aDireccionDelRemate.
+	fuerzaTiro := delantero fuerza.
+	fuerzaArquero := arquero fuerza.
 	
 	(direccionTiro between: 0@0 and: 2@2) ifFalse: [self error: Penales direccionTiroFueraDeRango].
 	(direccionArquero between: 0@0 and: 2@2) ifFalse: [self error: Penales direccionArqueroFueraDeRango].
 	
 	delantero tipoDeTiro = #Colocar
 		ifTrue:[
-			fuerzaTiro := (delantero fuerza *0.5). 
+			fuerzaTiro := (fuerzaTiro *0.5). 
 			pelota modelo = #Jabulani 
 				ifTrue: [
 					arquero tipo = #EligeDireccionAntesTiro 
 						ifTrue:[
-							fuerzaArquero := arquero fuerza *1.5
+							fuerzaArquero := fuerzaArquero *1.5
 						].
 					
 					arquero tipo = #EsperaTiroYSeAdelanta
 						ifTrue:[
-							fuerzaArquero := arquero fuerza. direccionArquero := direccionArquero x @ direccionTiro y
+							direccionArquero := direccionArquero x @ direccionTiro y
 						].
 				].
 			
@@ -876,13 +877,14 @@ arbitroPitaConPelota: aPelota delanteroRemataAlArcoConDireccion: aDireccionDelRe
 					fuerzaTiro := fuerzaTiro * 0.8. 
 					arquero tipo = #EligeDireccionAntesTiro 
 						ifTrue:[
-							fuerzaArquero := arquero fuerza * 2
+							fuerzaArquero := fuerzaArquero * 2
 						].
 					
 					arquero tipo = #EsperaTiroYSeAdelanta
 						ifTrue:[
-							puntajeDeDelantero := puntajeDeDelantero + 1.
+							self puntoParaDelantero.
 							^self
+							"puedeAtajar:= false"
 						].
 					
 				].	
@@ -890,36 +892,32 @@ arbitroPitaConPelota: aPelota delanteroRemataAlArcoConDireccion: aDireccionDelRe
 		
 		delantero tipoDeTiro = #Matar 
 			ifTrue:[
+				(self esUnAnguloDelArco: direccionTiro)
+					ifTrue:[ 
+						direccionTiro := direccionTiro x @ 1.
+					].
 				pelota modelo = #Jabulani 
 					ifTrue:[
-						fuerzaTiro := delantero fuerza * 1.2.
-						(self esUnAnguloDelArco: direccionTiro)
-							ifTrue:[ 
-								direccionTiro := direccionTiro x @ 1.
-							].
-					
+						fuerzaTiro := fuerzaTiro* 1.2.
 						arquero tipo = #EsperaTiroYSeAdelanta
 							ifTrue:[
-								puntajeDeDelantero := puntajeDeDelantero + 1.
+								self puntoParaDelantero.
 								^self
+								"puedeAtajar := false"
 							].
 						arquero tipo = #EligeDireccionAntesTiro 
 							ifTrue:[
 								 direccionArquero := direccionArquero x @ direccionTiro y
 							].
-						fuerzaArquero := arquero fuerza.
+						
 					].
 						
 					
 				pelota modelo = #Playera
 					ifTrue:[
-						(self esUnAnguloDelArco: direccionTiro)
+						(self esUnAnguloDelArco: aDireccionDelRemate)
 							ifFalse:[
-								direccionTiro := direccionTiro x @ (direccionTiro y + 2)
-							]
-							
-							ifTrue:[
-								direccionTiro := direccionTiro x @ 1
+								direccionTiro := aDireccionDelRemate x @ (aDireccionDelRemate y + 2)
 							].
 						arquero tipo = #EligeDireccionAntesTiro 
 							ifTrue:[
@@ -927,19 +925,16 @@ arbitroPitaConPelota: aPelota delanteroRemataAlArcoConDireccion: aDireccionDelRe
 							].
 						arquero tipo = #EsperaTiroYSeAdelanta
 							ifTrue: [
-								puntajeDelArquero := puntajeDelArquero + 1. 
+								self puntoParaArquero. 
 								^self
-							].
-						fuerzaArquero := arquero fuerza.
-						fuerzaTiro := delantero fuerza.
- 				
+							].			
 				]
 			].
 
 		
 		(direccionTiro between: 0@0 and: 2@2)
 			 ifFalse: [
-				puntajeDelArquero := puntajeDelArquero +1
+				self puntoParaArquero
 			]
 		
 			ifTrue:[
@@ -947,20 +942,30 @@ arbitroPitaConPelota: aPelota delanteroRemataAlArcoConDireccion: aDireccionDelRe
 					ifTrue:[
 						fuerzaArquero < fuerzaTiro 
 						ifTrue:[
-							puntajeDeDelantero := puntajeDeDelantero +1
+							self puntoParaDelantero
 						]
 						ifFalse:[
-							puntajeDelArquero := puntajeDelArquero +1					
+							self puntoParaArquero					
 						] 
 					]
 					
 					ifFalse: [
-						puntajeDeDelantero := puntajeDeDelantero +1
+						self puntoParaDelantero
 					]
 			].
 	 
 													
 				! !
+
+!Penales methodsFor: 'jugarPenal' stamp: 'mc 4/22/2025 18:57:24'!
+puntoParaArquero
+
+	^ puntajeDelArquero := puntajeDelArquero + 1! !
+
+!Penales methodsFor: 'jugarPenal' stamp: 'mc 4/22/2025 18:56:15'!
+puntoParaDelantero
+
+	^ puntajeDeDelantero := puntajeDeDelantero +1! !
 
 
 !Penales methodsFor: 'assert' stamp: 'mc 4/22/2025 14:09:35'!
