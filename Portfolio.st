@@ -5,7 +5,7 @@ TestCase subclass: #AccountSummaryTests
 	poolDictionaries: ''
 	category: 'Portfolio'!
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:14:23'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:01'!
 test01AccountWithoutTransactionsOnlyShowsBalanceInAccountSummary
 	
 	|account accountSummary|
@@ -15,7 +15,7 @@ test01AccountWithoutTransactionsOnlyShowsBalanceInAccountSummary
 	
 	self assert: accountSummary summary  equals: (OrderedCollection with: 'Balance = 0')! !
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:13:46'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:05'!
 test02DepositIsShownInAccountSummary
 	
 	|account accountSummary|
@@ -26,7 +26,7 @@ test02DepositIsShownInAccountSummary
 	
 	self assert: accountSummary summary  equals: (OrderedCollection with: 'Depósito por 100' with: 'Balance = 100')! !
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:13:39'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:07'!
 test03WithdrawIsShownInAccountSummary
 	
 	|account accountSummary|
@@ -37,7 +37,7 @@ test03WithdrawIsShownInAccountSummary
 	
 	self assert: accountSummary summary  equals: (OrderedCollection with: 'Extracción por 100' with: 'Balance = -100')! !
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:13:30'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:10'!
 test04TransferDepositIsShownInAccountSummary
 	
 	|accountOrigin accountDestination accountSummary|
@@ -50,7 +50,7 @@ test04TransferDepositIsShownInAccountSummary
 	
 	self assert: accountSummary summary  equals: (OrderedCollection with: 'Entrada por transferencia de 100' with: 'Balance = 100')! !
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:13:21'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:12'!
 test05TransferWithdrawIsShownInAccountSummary
 	
 	|accountOrigin accountDestination accountSummary|
@@ -63,7 +63,7 @@ test05TransferWithdrawIsShownInAccountSummary
 	
 	self assert: accountSummary summary  equals: (OrderedCollection with: 'Salida por transferencia de 100' with: 'Balance = -100')! !
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:19:43'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:14'!
 test06AllTransactionAreShownInAccountSummary
 	
 	|accountOrigin accountDestination accountSummary|
@@ -78,7 +78,7 @@ test06AllTransactionAreShownInAccountSummary
 	
 	self assert: accountSummary summary  equals: (OrderedCollection with: 'Salida por transferencia de 100' with:'Depósito por 200' with:'Extracción por 50' with: 'Balance = 50')! !
 
-!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/5/2025 18:26:46'!
+!AccountSummaryTests methodsFor: 'tests' stamp: 'mc 6/7/2025 12:00:16'!
 test07PortfolioSummary
 	
 	|accountOrigin accountDestination accountSummary portfolio|
@@ -104,7 +104,7 @@ TestCase subclass: #AccountTransferNetTests
 	poolDictionaries: ''
 	category: 'Portfolio'!
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:14:47'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:42'!
 test01TransferNetIsZeroWhenNoTransfersInAccount
 
 	|account accountTransferNet|
@@ -114,7 +114,7 @@ test01TransferNetIsZeroWhenNoTransfersInAccount
 	
 	self assert: (accountTransferNet value) equals:0.! !
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:25:22'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:39'!
 test02TransferDepositIncreaseTransferNet
 
 	|accountOrigin accountDestiny accountTransferNet|
@@ -126,7 +126,7 @@ test02TransferDepositIncreaseTransferNet
 	
 	self assert: (accountTransferNet value) equals:100.! !
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:39:41'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:35'!
 test03TransferWithdrawDecreasesTransferNet
 
 	|accountOrigin accountDestiny accountTransferNet|
@@ -138,7 +138,7 @@ test03TransferWithdrawDecreasesTransferNet
 	
 	self assert: (accountTransferNet value) equals: -100.! !
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:42:44'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:33'!
 test04DepositDoesntAffectsTransfetNet
 
 	|account  accountTransferNet|
@@ -151,7 +151,7 @@ test04DepositDoesntAffectsTransfetNet
 	
 	self assert: (accountTransferNet value) equals: 0.! !
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:42:38'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:31'!
 test05WithdrawDoesntAffectsTransfetNet
 
 	|account  accountTransferNet|
@@ -164,7 +164,7 @@ test05WithdrawDoesntAffectsTransfetNet
 	
 	self assert: (accountTransferNet value) equals: 0.! !
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:54:27'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:28'!
 test06AllTransactionAffectsAccountTransferNetCorrectly
 
 	|accountOrigin accountDestiny  accountTransferNet|
@@ -181,7 +181,7 @@ test06AllTransactionAffectsAccountTransferNetCorrectly
 	
 	self assert: (accountTransferNet value) equals: 100.! !
 
-!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/5/2025 19:57:10'!
+!AccountTransferNetTests methodsFor: 'tests' stamp: 'mc 6/7/2025 11:59:25'!
 test07PortfolioTransferNet
 
 	|accountOrigin accountDestiny  accountTransferNet portfolio|
@@ -197,6 +197,68 @@ test07PortfolioTransferNet
 	
 	
 	self assert: (accountTransferNet value) equals: 0.! !
+
+
+!classDefinition: #PortfolioSummaryTest category: 'Portfolio'!
+TestCase subclass: #PortfolioSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+!PortfolioSummaryTest methodsFor: 'tests' stamp: 'mc 6/7/2025 18:26:25'!
+test01PortfolioEmptyOnlyShowsHisNameAndBalance
+
+	|portfolio portfolioSummary portfolioName |
+	
+	portfolioName := 'Portfolio vacio'.
+	portfolio := Portfolio named: portfolioName.
+	
+	portfolioSummary := PortfolioSummary of: portfolio.
+	
+	self assert: (portfolioSummary summary) equals: (OrderedCollection with: portfolioName with: 'Balance = ', (portfolio balance) asString).! !
+
+!PortfolioSummaryTest methodsFor: 'tests' stamp: 'mc 6/7/2025 18:54:00'!
+test01PortfolioWithAccountShowsTheirTransactionsAndNames
+
+	|accountNameChild accountChild accountNameParent accountParent portfolioParent portfolioChild portfolioSummary portfolioParentName portfolioChildName expectedSummary|
+	
+
+	accountNameChild := 'Cuenta de Jose'.
+	accountChild := ReceptiveAccount named: accountNameChild .
+	
+	
+	portfolioChildName := 'Portfolio de hijo'.
+	portfolioChild := Portfolio named: portfolioChildName .
+	portfolioChild add: accountChild.
+	
+	accountNameParent := 'Cuenta de Mariano'.
+	accountParent := ReceptiveAccount named: accountNameParent .
+	Transfer register: 50 from: accountParent to: accountChild.
+	Deposit register:100 on: accountParent.
+	Withdraw  register: 100 on: accountParent.
+	
+	portfolioParentName := 'Portfolio de Padre'.
+	portfolioParent := Portfolio named: portfolioParentName.
+	portfolioParent add: accountParent; add: portfolioChild. 
+	
+	portfolioSummary := PortfolioSummary of: portfolioParent.
+	
+	expectedSummary := {					    portfolioParentName.
+							'  ',accountNameParent.
+							'    Salida por transferencia de 50'.
+							'    Depósito por 100'.
+							'    Extracción por 100'.
+							'  Balance = ', (accountParent balance) asString.
+							'  ', portfolioChildName.
+							'    ', accountNameChild.
+							'      Entrada por transferencia de 50'	.
+							'    Balance = ', (accountChild balance) asString.
+							'  Balance = ', (portfolioChild balance) asString.
+							'Balance = ', (portfolioParent balance) asString.
+						}.
+	self assert: (portfolioSummary summary) 
+	equals: expectedSummary asOrderedCollection .! !
 
 
 !classDefinition: #PortfolioTest category: 'Portfolio'!
@@ -415,6 +477,73 @@ test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd
 			self assert: portfolioToModify accountsIsEmpty ]! !
 
 
+!classDefinition: #PortfolioTreePrinterTest category: 'Portfolio'!
+TestCase subclass: #PortfolioTreePrinterTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+!PortfolioTreePrinterTest methodsFor: 'test' stamp: 'mc 6/7/2025 12:09:01'!
+test01EmptyPortolioOnlyPrintsItself
+
+	|portfolio portfolioName portfolioTreePrinter|
+	
+	portfolioName := 'Portfolio de Mariano'.
+	portfolio := Portfolio named: portfolioName .
+	
+	portfolioTreePrinter := PortfolioTreePrinter of: portfolio.
+	
+	self assert: (portfolioTreePrinter print) equals: (OrderedCollection with: portfolioName )! !
+
+!PortfolioTreePrinterTest methodsFor: 'test' stamp: 'mc 6/7/2025 12:30:11'!
+test02PortfolioWithAccountShowsAccountIdented
+
+	|accountJulieta portfolioMariano accountName portfolioName portfolioTreePrinter|
+	
+	accountName := 'Cuenta de Julieta'.
+	portfolioName := 'Portfolio de Mariano'.
+	
+	accountJulieta := ReceptiveAccount named: accountName.
+	
+	portfolioMariano := Portfolio named: portfolioName .
+	portfolioMariano add: accountJulieta. 
+	
+	
+	portfolioTreePrinter := PortfolioTreePrinter of: portfolioMariano .
+	
+	self assert: (portfolioTreePrinter print) equals: (OrderedCollection with: portfolioName with: '  ',accountName  )! !
+
+!PortfolioTreePrinterTest methodsFor: 'test' stamp: 'mc 6/7/2025 13:03:57'!
+test03PortfolioWithAccountAndPortfoliosPrintThemAllCorrectlyIdented
+
+	|accountJulieta portfolioHijo accountHijo accountHijoName accountJulietaName portfolioPadreName portfolioHijoName portfolioPadre portfolioTreePrinter|
+	
+	accountJulietaName := 'Cuenta de Julieta'.
+	accountHijoName := 'Cuenta del Hijo'.
+	portfolioPadreName := 'Portfolio Padre'.  
+	portfolioHijoName := 'Portfolio hijo'.
+	
+	accountHijo := ReceptiveAccount named: accountHijoName. 
+	portfolioHijo := Portfolio named: portfolioHijoName .
+	portfolioHijo add: accountHijo.
+	
+	accountJulieta := ReceptiveAccount named: accountJulietaName.
+	portfolioPadre := Portfolio named: portfolioPadreName .  
+	portfolioPadre add: portfolioHijo; add: accountJulieta.
+	
+	portfolioTreePrinter := PortfolioTreePrinter of: portfolioPadre.
+	
+	self assert: (portfolioTreePrinter print) 
+	equals: (OrderedCollection 
+				with: portfolioPadreName
+				with: '  ', portfolioHijoName
+				with: '    ', accountHijoName
+				with: '  ', accountJulietaName 	
+			)
+	! !
+
+
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio'!
 TestCase subclass: #ReceptiveAccountTest
 	instanceVariableNames: ''
@@ -600,7 +729,7 @@ test07CantTransferNegativeValues
 
 !classDefinition: #Account category: 'Portfolio'!
 Object subclass: #Account
-	instanceVariableNames: ''
+	instanceVariableNames: 'name'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio'!
@@ -643,6 +772,23 @@ addedTo: aPortfolio
 visitTransactionsWith: anAccountReport 
 	
 	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'accesing' stamp: 'mc 6/7/2025 12:27:22'!
+name
+
+	^name! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Account class' category: 'Portfolio'!
+Account class
+	instanceVariableNames: ''!
+
+!Account class methodsFor: 'instance creation' stamp: 'mc 6/7/2025 12:15:33'!
+named: aName
+	
+	^self new initializeNamed: aName ! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio'!
@@ -687,9 +833,10 @@ rootParents
 	^ rootParents! !
 
 
-!Portfolio methodsFor: 'initialization' stamp: 'HAW 5/25/2019 12:03:18'!
-initialize
-
+!Portfolio methodsFor: 'initialization' stamp: 'mc 6/7/2025 12:06:39'!
+initializeNamed: aName 
+	
+	name := aName.
 	accounts := OrderedCollection new.
 	parents := OrderedCollection new.! !
 
@@ -757,10 +904,21 @@ signalCanNotAddAccount
 	self error: self class canNotAddAccountErrorMessage! !
 
 
-!Portfolio methodsFor: 'summary' stamp: 'mc 6/5/2025 19:35:02'!
+!Portfolio methodsFor: 'summary' stamp: 'mc 6/7/2025 13:14:14'!
 visitTransactionsWith: anAccountReport 
 	
-	accounts do:[:account | account visitTransactionsWith: anAccountReport ].! !
+	accounts do:[:account | account visitAccountsWith: anAccountReport ].! !
+
+
+!Portfolio methodsFor: 'accesing' stamp: 'mc 6/7/2025 13:08:50'!
+doWith: aPortfolioTreePrinter 
+	
+	aPortfolioTreePrinter doWithPortfolio: self.! !
+
+!Portfolio methodsFor: 'accesing' stamp: 'mc 6/7/2025 12:44:37'!
+visitAccountsWith: aPortfolioTreePrinter 
+	
+	accounts do:[:account | account doWith: aPortfolioTreePrinter].! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -788,6 +946,7 @@ with: anAccount with: anotherAccount
 		add: anotherAccount;
 		yourself! !
 
+
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio'!
 Account subclass: #ReceptiveAccount
@@ -796,10 +955,10 @@ Account subclass: #ReceptiveAccount
 	poolDictionaries: ''
 	category: 'Portfolio'!
 
-!ReceptiveAccount methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:35'!
-initialize
-
-	super initialize.
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'mc 6/7/2025 12:16:40'!
+initializeNamed: aName 
+	
+	name := aName.
 	transactions := OrderedCollection new.! !
 
 
@@ -851,147 +1010,11 @@ visitTransactionsWith: anAccountReport
 	
 	transactions do: [:transaction | transaction doWith: anAccountReport].! !
 
-
-!classDefinition: #AccountReports category: 'Portfolio'!
-Object subclass: #AccountReports
-	instanceVariableNames: 'account'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio'!
 
-!AccountReports methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:46:48'!
-addDeposit: aDeposit
-
-	self subclassResponsibility ! !
-
-!AccountReports methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:47:17'!
-addTransferDeposit: aTransferDeposit
-
-	self subclassResponsibility ! !
-
-!AccountReports methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:47:28'!
-addTransferWithdraw: aTransferWithdraw
-
-	self subclassResponsibility ! !
-
-!AccountReports methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:47:03'!
-addWithdraw: aWithdraw
-
-	self subclassResponsibility ! !
-
-
-!AccountReports methodsFor: 'initialization' stamp: 'mc 6/5/2025 19:48:06'!
-initializeOf: anAccount
-
-	account := anAccount.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'AccountReports class' category: 'Portfolio'!
-AccountReports class
-	instanceVariableNames: ''!
-
-!AccountReports class methodsFor: 'instance creation' stamp: 'mc 6/5/2025 19:45:21'!
-of: anAccount
-
-	self subclassResponsibility ! !
-
-
-!classDefinition: #AccountSummary category: 'Portfolio'!
-AccountReports subclass: #AccountSummary
-	instanceVariableNames: 'summary'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio'!
-
-
-!AccountSummary methodsFor: 'summary' stamp: 'mc 6/5/2025 17:22:32'!
-summary
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'mc 6/7/2025 12:46:02'!
+doWith: aPortfolioTreePrinter 
 	
-	summary := OrderedCollection new.
-	
-	account visitTransactionsWith: self.
-	summary add: 'Balance = ', (account balance) asString.
-	
-	^summary! !
-
-
-!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/5/2025 18:09:15'!
-addDeposit: aDeposit 
-	
-	summary add: 'Depósito por ', (aDeposit value) asString! !
-
-!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/5/2025 18:04:34'!
-addTransferDeposit: aTransferDeposit
-	
-	summary add: 'Entrada por transferencia de ', (aTransferDeposit value) asString.! !
-
-!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/5/2025 18:08:16'!
-addTransferWithdraw: aTransferWithdraw
-	
-	summary add: 'Salida por transferencia de ', (aTransferWithdraw value) asString.! !
-
-!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/5/2025 18:01:32'!
-addWithdraw: aWithdraw 
-	
-	summary add: 'Extracción por ', (aWithdraw value) asString.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'AccountSummary class' category: 'Portfolio'!
-AccountSummary class
-	instanceVariableNames: ''!
-
-!AccountSummary class methodsFor: 'instance creation' stamp: 'mc 6/5/2025 17:00:09'!
-of: anAccount 
-	
-	^self new initializeOf: anAccount ! !
-
-
-!classDefinition: #AccountTransferNet category: 'Portfolio'!
-AccountReports subclass: #AccountTransferNet
-	instanceVariableNames: 'transferNet'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio'!
-
-
-!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:42:05'!
-addDeposit: aDeposit 
-	! !
-
-!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:39:02'!
-addTransferDeposit: aTransferDeposit
-
-	transferNet  := transferNet + (aTransferDeposit value)! !
-
-!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:40:13'!
-addTransferWithdraw: aTransferWithdraw
-
-	transferNet := transferNet - (aTransferWithdraw value)! !
-
-!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:43:03'!
-addWithdraw: aWithdraw 
-	! !
-
-!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/5/2025 19:30:12'!
-value
-	
-	transferNet := 0.
-	account visitTransactionsWith: self.
-	
-	^transferNet.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'AccountTransferNet class' category: 'Portfolio'!
-AccountTransferNet class
-	instanceVariableNames: ''!
-
-!AccountTransferNet class methodsFor: 'instance creation' stamp: 'mc 6/5/2025 19:19:19'!
-of: anAccount 
-	
-	^self new initializeOf: anAccount ! !
+	aPortfolioTreePrinter doWithReceptiveAccount: self.! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio'!
@@ -1061,10 +1084,10 @@ affectBalance: aBalance
 	^aBalance + value ! !
 
 
-!Deposit methodsFor: 'summary' stamp: 'mc 6/5/2025 19:37:40'!
+!Deposit methodsFor: 'summary' stamp: 'mc 6/7/2025 11:52:53'!
 doWith: anAccountReport 
 	
-	anAccountReport addDeposit: self.! !
+	anAccountReport doWithDeposit: self.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1144,10 +1167,10 @@ withdrawLeg
 	^transfer withdrawLeg ! !
 
 
-!TransferDepositLeg methodsFor: 'summary' stamp: 'mc 6/5/2025 19:36:01'!
+!TransferDepositLeg methodsFor: 'summary' stamp: 'mc 6/7/2025 11:52:35'!
 doWith: anAccountReport 
 	
-	anAccountReport addTransferDeposit: self.! !
+	anAccountReport doWithTransferDeposit: self.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1180,10 +1203,10 @@ depositLeg
 	^transfer depositLeg! !
 
 
-!TransferWithdrawLeg methodsFor: 'summary' stamp: 'mc 6/5/2025 19:38:00'!
+!TransferWithdrawLeg methodsFor: 'summary' stamp: 'mc 6/7/2025 11:52:44'!
 doWith: anAccountReport 
 	
-	anAccountReport addTransferWithdraw: self! !
+	anAccountReport doWithTransferWithdraw: self! !
 
 
 !classDefinition: #Withdraw category: 'Portfolio'!
@@ -1211,10 +1234,10 @@ affectBalance: aBalance
 	^aBalance - value! !
 
 
-!Withdraw methodsFor: 'summary' stamp: 'mc 6/5/2025 19:38:07'!
+!Withdraw methodsFor: 'summary' stamp: 'mc 6/7/2025 11:52:59'!
 doWith: anAccountReport 
 	
-	anAccountReport addWithdraw: self.! !
+	anAccountReport doWithWithdraw: self.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1226,6 +1249,286 @@ Withdraw class
 for: aValue
 
 	^ self new initializeFor: aValue ! !
+
+
+!classDefinition: #PortfolioSummary category: 'Portfolio'!
+Object subclass: #PortfolioSummary
+	instanceVariableNames: 'portfolio summary spaces'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+!PortfolioSummary methodsFor: 'initialization' stamp: 'mc 6/7/2025 18:24:50'!
+initializeOf: aPortfolio 
+	
+	portfolio := aPortfolio.! !
+
+
+!PortfolioSummary methodsFor: 'summary' stamp: 'mc 6/7/2025 19:07:16'!
+doWithPortfolio: aPortfolio 
+	
+	summary add: spaces,aPortfolio name.
+	spaces := spaces,'  '.
+	
+	aPortfolio visitAccountsWith: self.
+	
+	spaces := spaces allButLast: 2.
+	
+	summary add: spaces, 'Balance = ', (aPortfolio balance) asString.! !
+
+!PortfolioSummary methodsFor: 'summary' stamp: 'mc 6/7/2025 19:00:30'!
+summary
+	
+	summary := OrderedCollection new.
+	spaces := ''.
+	
+	summary add: portfolio name.
+	
+	spaces := spaces, '  '.
+	portfolio visitAccountsWith: self.
+	
+	summary add: 'Balance = ', (portfolio balance) asString.
+	^summary! !
+
+
+!PortfolioSummary methodsFor: 'as yet unclassified' stamp: 'mc 6/7/2025 19:06:00'!
+doWithReceptiveAccount: aReceptiveAccount 
+	
+	| accountSummary |
+	summary add: spaces,(aReceptiveAccount name).
+	
+	spaces := spaces,'  '.
+	accountSummary := (AccountSummary of: aReceptiveAccount) summary.
+	accountSummary do: [:aTransactionSummary | summary add: (spaces,aTransactionSummary)]. 
+	spaces := spaces allButLast: 2.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PortfolioSummary class' category: 'Portfolio'!
+PortfolioSummary class
+	instanceVariableNames: ''!
+
+!PortfolioSummary class methodsFor: 'instance creation' stamp: 'mc 6/7/2025 18:24:40'!
+of: aPortfolio 
+	
+	^self new initializeOf: aPortfolio ! !
+
+
+!classDefinition: #PortfolioTreePrinter category: 'Portfolio'!
+Object subclass: #PortfolioTreePrinter
+	instanceVariableNames: 'portfolio tree spaces'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+!PortfolioTreePrinter methodsFor: 'treePrint' stamp: 'mc 6/7/2025 12:32:06'!
+accountsEmpty: aPortfolio 
+	
+	tree add: portfolio name.! !
+
+!PortfolioTreePrinter methodsFor: 'treePrint' stamp: 'mc 6/7/2025 12:28:31'!
+accountsNotEmpty: anAccount
+
+
+	tree add: portfolio name; add: '  ', anAccount name .! !
+
+!PortfolioTreePrinter methodsFor: 'treePrint' stamp: 'mc 6/7/2025 12:50:00'!
+addName: aName
+
+	tree add: (spaces, aName).
+	! !
+
+!PortfolioTreePrinter methodsFor: 'treePrint' stamp: 'mc 6/7/2025 13:32:58'!
+doWithPortfolio: aPortfolio 
+	
+	
+	self addName: aPortfolio name.
+	spaces := spaces, '  '.
+	aPortfolio visitAccountsWith: self.
+	spaces := spaces allButLast: 2.! !
+
+!PortfolioTreePrinter methodsFor: 'treePrint' stamp: 'mc 6/7/2025 12:49:05'!
+doWithReceptiveAccount: aReceptiveAccount 
+	
+	self addName: aReceptiveAccount name.! !
+
+!PortfolioTreePrinter methodsFor: 'treePrint' stamp: 'mc 6/7/2025 13:32:46'!
+print
+	
+	tree := OrderedCollection new.
+	
+	spaces := ''.
+	self addName: portfolio name.
+	
+	spaces := spaces, '  '.
+	portfolio visitAccountsWith: self.
+	
+	^tree.! !
+
+
+!PortfolioTreePrinter methodsFor: 'initialization' stamp: 'mc 6/7/2025 12:07:09'!
+initializeOf: aPortfolio 
+	
+	portfolio := aPortfolio.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PortfolioTreePrinter class' category: 'Portfolio'!
+PortfolioTreePrinter class
+	instanceVariableNames: ''!
+
+!PortfolioTreePrinter class methodsFor: 'instance creation' stamp: 'mc 6/7/2025 12:06:58'!
+of: aPortfolio 
+	
+	^self new initializeOf: aPortfolio ! !
+
+
+!classDefinition: #TransactionVisitor category: 'Portfolio'!
+Object subclass: #TransactionVisitor
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+!TransactionVisitor methodsFor: 'operation' stamp: 'mc 6/7/2025 11:30:04'!
+result
+	
+	self subclassResponsibility ! !
+
+
+!TransactionVisitor methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:51:55'!
+doWithDeposit: aDeposit
+
+	self subclassResponsibility ! !
+
+!TransactionVisitor methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:04'!
+doWithTransferDeposit: aTransferDeposit
+
+	self subclassResponsibility ! !
+
+!TransactionVisitor methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:12'!
+doWithTransferWithdraw: aTransferWithdraw
+
+	self subclassResponsibility ! !
+
+!TransactionVisitor methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:22'!
+doWithWithdraw: aWithdraw
+
+	self subclassResponsibility ! !
+
+
+!TransactionVisitor methodsFor: 'initialization' stamp: 'mc 6/5/2025 19:48:06'!
+initializeOf: anAccount
+
+	account := anAccount.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TransactionVisitor class' category: 'Portfolio'!
+TransactionVisitor class
+	instanceVariableNames: ''!
+
+!TransactionVisitor class methodsFor: 'instance creation' stamp: 'mc 6/5/2025 19:45:21'!
+of: anAccount
+
+	self subclassResponsibility ! !
+
+
+!classDefinition: #AccountSummary category: 'Portfolio'!
+TransactionVisitor subclass: #AccountSummary
+	instanceVariableNames: 'summary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+
+!AccountSummary methodsFor: 'summary' stamp: 'mc 6/7/2025 11:59:12'!
+summary
+	
+	summary := OrderedCollection new.
+	
+	account visitTransactionsWith: self.
+	summary add: 'Balance = ', (account balance) asString.
+	
+	^summary! !
+
+
+!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:51:55'!
+doWithDeposit: aDeposit 
+	
+	summary add: 'Depósito por ', (aDeposit value) asString! !
+
+!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:05'!
+doWithTransferDeposit: aTransferDeposit
+	
+	summary add: 'Entrada por transferencia de ', (aTransferDeposit value) asString.! !
+
+!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:12'!
+doWithTransferWithdraw: aTransferWithdraw
+	
+	summary add: 'Salida por transferencia de ', (aTransferWithdraw value) asString.! !
+
+!AccountSummary methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:22'!
+doWithWithdraw: aWithdraw 
+	
+	summary add: 'Extracción por ', (aWithdraw value) asString.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'AccountSummary class' category: 'Portfolio'!
+AccountSummary class
+	instanceVariableNames: ''!
+
+!AccountSummary class methodsFor: 'instance creation' stamp: 'mc 6/5/2025 17:00:09'!
+of: anAccount 
+	
+	^self new initializeOf: anAccount ! !
+
+
+!classDefinition: #AccountTransferNet category: 'Portfolio'!
+TransactionVisitor subclass: #AccountTransferNet
+	instanceVariableNames: 'transferNet'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio'!
+
+!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:51:56'!
+doWithDeposit: aDeposit 
+	! !
+
+!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:53:45'!
+doWithTransferDeposit: aTransferDeposit
+
+	transferNet  := transferNet + (aTransferDeposit value)! !
+
+!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:53:29'!
+doWithTransferWithdraw: aTransferWithdraw
+
+	transferNet := transferNet - (aTransferWithdraw value)! !
+
+!AccountTransferNet methodsFor: 'transaction do' stamp: 'mc 6/7/2025 11:52:22'!
+doWithWithdraw: aWithdraw 
+	! !
+
+
+!AccountTransferNet methodsFor: 'operation' stamp: 'mc 6/7/2025 11:59:02'!
+value
+	
+	transferNet := 0.
+	account visitTransactionsWith: self.
+	
+	^transferNet.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'AccountTransferNet class' category: 'Portfolio'!
+AccountTransferNet class
+	instanceVariableNames: ''!
+
+!AccountTransferNet class methodsFor: 'instance creation' stamp: 'mc 6/5/2025 19:19:19'!
+of: anAccount 
+	
+	^self new initializeOf: anAccount ! !
 
 
 !classDefinition: #Transfer category: 'Portfolio'!
