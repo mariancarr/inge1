@@ -1,1 +1,2 @@
-resueltos https://github.com/UBA-FCEN-IngSoft1/2024-2c/tree/main/Parte%202
+Programacion orientada a objetos (POO) con Smalltalk. La verdad re divertido Smalltalk
+
